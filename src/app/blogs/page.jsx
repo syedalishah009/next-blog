@@ -45,7 +45,7 @@ const page = async () => {
               {post.desc}
                
               </p>
-              <div class="justify-starts mt-4 flex flex-wrap items-center">
+              <div class="justify-starts  mt-4 flex flex-wrap items-center">
                 <div class="mr-2 mt-1 rounded-2xl bg-blue-100 py-1.5 px-4 text-xs text-gray-600">
                   #js
                 </div>
