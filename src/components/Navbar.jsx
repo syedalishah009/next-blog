@@ -57,15 +57,17 @@ const Navbar = () => {
               <a href="#">About</a>
             </li>
             <li class="md:mr-12">
-              <Link href="/blogs">Blogs</Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li class="md:mr-12">
               <Link href="contact">Contact</Link>
             </li>
             <li class="md:mr-12">
+              <Link href="/login">
               <button class="rounded-full border-2 border-blue-900 px-6 py-1 text-blue-900 transition-colors hover:bg-blue-900 hover:text-white">
                 Login
               </button>
+              </Link>
             </li>
           </ul>
         </nav>

@@ -7,14 +7,15 @@ import { connectToDb } from "./utils"
 //   { id: 2, name: "Jane" },
 // ];
 
-const posts = [
-  { id: 1, title: "Post 1", body: "......", userId: 1 },
-  { id: 2, title: "Post 2", body: "......", userId: 1 },
-  { id: 3, title: "Post 3", body: "......", userId: 2 },
-  { id: 4, title: "Post 4", body: "......", userId: 2 },
-];
+// const posts = [
+//   { id: 1, title: "Post 1", body: "......", userId: 1 },
+//   { id: 2, title: "Post 2", body: "......", userId: 1 },
+//   { id: 3, title: "Post 3", body: "......", userId: 2 },
+//   { id: 4, title: "Post 4", body: "......", userId: 2 },
+// ];
 
 
+// Get All Posts
 export const getPosts = async () => {
     try {
       connectToDb();
@@ -27,6 +28,19 @@ export const getPosts = async () => {
   };
 
 
+  // Get Singl Post
+export const getSinglePost = async (slug) => {
+    try {
+      connectToDb();
+      const post = await Post.findOne({slug});
+      return post; 
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to fetch post!");
+    }
+  };
+
+
 export const getUsers = async () =>{
     try {
         connectToDb();
@@ -35,5 +49,5 @@ export const getUsers = async () =>{
     } catch(err) {
         console.log(err)
         throw new Error("failed to fectch users")
-    }
+    } 
 }

@@ -1,22 +1,24 @@
-
 import { getPosts } from "@/libs/data";
+import Link from "next/link";
 import React from "react";
 
 // FETCH DATA WITH AN API
-// const getData = async () => {
-//     const res = await fetch("http://localhost:3000/api/blog", {next:{revalidate:3600}});
-  
-//     if (!res.ok) {
-//       throw new Error("Something went wrong");
-//     }
-  
-//     return res.json();
-//   };
+const getData = async () => {
+    const res = await fetch("http://localhost:3000/api/blog", { next:{revalidate:3600}});
+    if (!res.ok) {        
+      console.log("something went wrong")
+    }
+    return res.json(); 
+  };
 
 const page = async () => {
 
-    const posts = await getPosts();
-    console.log("post from database", posts)
+  // fetching data with an API
+  const posts = await getData();
+
+  // this is fetching data with out an api 
+  // const posts = await getPosts();
+
   return (
     <section class="py-20">
         
@@ -27,9 +29,9 @@ const page = async () => {
 
       {posts?.map((post)=>( 
           
-       
-        <article class="h-90 col-span-1 m-auto min-h-full cursor-pointer overflow-hidden rounded-lg pb-2 shadow-lg transition-transform duration-200 hover:translate-y-2">
-          <a href="#" class="block h-full w-full">
+     
+        <article key={post.id} class="h-90 col-span-1 m-auto min-h-full cursor-pointer overflow-hidden rounded-lg pb-2 shadow-lg transition-transform duration-200 hover:translate-y-2">
+          <Link href={`/blog/${post.slug}`} class="block h-full w-full">
             <img
               class="max-h-40 w-full object-cover"
               alt="featured image"
@@ -54,8 +56,10 @@ const page = async () => {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         </article>
+    
+
 
 ))}
       </div>
